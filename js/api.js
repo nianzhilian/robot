@@ -58,7 +58,6 @@ const API = (() => {
         return post('/api/chat', { content }).then((resp) => {
             return resp.json();
         }).then((res) => {
-            console.log(res);
             return res;
         })
     }
@@ -67,12 +66,16 @@ const API = (() => {
         const resp = await get('/api/chat/history');
         return await resp.json();
     }
+    function loginOut(){
+        localStorage.removeItem(TOKEN_STR);
+    }
     return {
         reg,
         login,
         exists,
         profile,
         sendChat,
-        getChat
+        getChat,
+        loginOut
     }
 })();
